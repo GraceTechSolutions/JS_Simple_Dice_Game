@@ -1,0 +1,47 @@
+body{
+    background-color: aquamarine;
+}
+
+div, h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+button {
+    font-size: larger;
+    background-color: blueviolet;
+    border: 2px solid rgb(64, 22, 104);
+    color: #FFF;
+    text-transform: uppercase;
+    padding: 10px 25px;
+    cursor: pointer;
+}
+
+h1>span{
+    color: red;
+}
+
+#screen {
+    text-align: center;
+    background-color: rgb(102, 98, 98);
+    padding: 15px;
+    color: #FFF;
+    cursor: default;
+}
+
+#banner {
+    display: none;
+    position: absolute;
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+
+#banner > h1 {
+    z-index: 5;
+    color: #FFF;
+}
