@@ -3,7 +3,7 @@
 let user1 = 'Akash';
 let user2 = 'Rahul';
 
-let winningPoint = 50;
+let winningPoint = 100;
 
 
 let user1Point = 0;
@@ -19,7 +19,7 @@ let currentUserName;
 
 
 // Elements
-let currentTurnBox = document.getElementById('turn')
+// let currentTurnBox = document.getElementById('turn');
 let user1NameBox = document.getElementById('user1')
 let user2NameBox = document.getElementById('user2')
 
@@ -35,12 +35,21 @@ function htmlUpdater() {
     if (user1Turn) {currentUserName = user1;}
     else {currentUserName = user2;}
 
-    currentTurnBox.textContent = currentUserName
+    // currentTurnBox.textContent = currentUserName
     user1NameBox.textContent = user1;
     user2NameBox.textContent = user2;
     user1PointBox.textContent = user1Point;
     user2PointBox.textContent = user2Point;
     winningPointBox.textContent = winningPoint;
+    
+    if(user1Turn) {
+        user1PointBox.style.backgroundColor = 'rgba(0, 0, 0, 0.3)'
+        user2PointBox.style.backgroundColor = 'transparent'
+    }
+    else {
+        user2PointBox.style.backgroundColor = 'rgba(0, 0, 0, 0.3)'
+        user1PointBox.style.backgroundColor = 'transparent'
+    }
 }
 
 htmlUpdater()
@@ -95,6 +104,23 @@ let screen = document.getElementById('screen')
 let btn = document.getElementById('dice')
 
 
+function hover(){
+    if (user1Turn) {
+        if (user2NameBox.style.backgroundColor == 'blueviolet') {
+            user2NameBox.style.backgroundColor = 'transparent'
+            user1NameBox.style.backgroundColor  = 'blueviolet'
+        }
+    }
+    else {
+        if (user1NameBox.style.backgroundColor == 'blueviolet') {
+            user1NameBox.style.backgroundColor = 'transparent'
+            user2NameBox.style.backgroundColor  = 'blueviolet'
+        }
+    }
+}
+
+
+
 function rollDice() {
     let result = random();
     screen.textContent = result;
@@ -102,9 +128,21 @@ function rollDice() {
     turnDecider(result)
     htmlUpdater()
     winnerDecider()
+    hover()
 }
 
 
 
 btn.addEventListener('click', rollDice)
-
+btn.addEventListener('mouseover', () => {
+    if (user1Turn) {
+        user1NameBox.style.backgroundColor = 'blueviolet';
+    }
+    else {
+        user2NameBox.style.backgroundColor = 'blueviolet';
+    }
+})
+btn.addEventListener('mouseout', () => {
+    user1NameBox.style.backgroundColor = 'transparent';
+    user2NameBox.style.backgroundColor = 'transparent';
+})
