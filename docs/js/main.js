@@ -30,6 +30,9 @@ let winningPointBox = document.getElementById('winningPoint')
 let banner = document.getElementById('banner')
 let winnerBox = document.getElementById('winner')
 
+let u1 = document.getElementById('u1')
+let u2 = document.getElementById('u2')
+
 
 function htmlUpdater() {
     if (user1Turn) {currentUserName = user1;}
@@ -88,7 +91,7 @@ function winnerDecider(){
     if (!gameRunning) {
         console.log(`winner is ${winner}`);
         winnerBox.textContent = winner;
-        banner.style.display = 'block'
+        banner.style.display = 'inline'
     }
 }
 
@@ -145,4 +148,37 @@ btn.addEventListener('mouseover', () => {
 btn.addEventListener('mouseout', () => {
     user1NameBox.style.backgroundColor = 'transparent';
     user2NameBox.style.backgroundColor = 'transparent';
+})
+
+
+
+
+user1NameBox.addEventListener('click', () => {
+      user1NameBox.style.display = 'none';
+      u1.style.display = 'inline';
+})
+
+
+
+document.getElementById('user1submit').addEventListener('click', () => {
+    let n1 = document.getElementById('user1input').value
+    user1 = n1
+    htmlUpdater()
+    u1.style.display = 'none'
+    user1NameBox.style.display = 'inline';
+})
+
+
+user2NameBox.addEventListener('click', () => {
+    user2NameBox.style.display = 'none';
+    u2.style.display = 'inline';
+})
+
+
+document.getElementById('user2submit').addEventListener('click', () => {
+    let n2 = document.getElementById('user2input').value
+    user2 = n2
+    htmlUpdater()
+    u2.style.display = 'none'
+    user2NameBox.style.display = 'inline';
 })
